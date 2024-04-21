@@ -6,8 +6,15 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from 'react-redux';
 import Chat from './components/Chat.js';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
+
+  useEffect(() => {
+    axios.get("api/pdf/invoke")
+  }, [])
+  
 
   const {pdfInfo} = useSelector(state => state.pdf);
 
