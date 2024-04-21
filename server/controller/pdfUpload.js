@@ -41,3 +41,8 @@ export const pdfFileUpload = async (req, res, next) => {
         });
     });
 }
+
+export const invokeServer = async (req,res,next) => {
+  console.log('SERVER WAKED UP!!')
+  res.status(200).json({response:true})
+}

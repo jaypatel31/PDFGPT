@@ -12,7 +12,7 @@ import axios from 'axios';
 function App() {
 
   useEffect(() => {
-    axios.get("api/pdf/invoke")
+    axios.get("/api/pdf/invoke")
   }, [])
   
 

@@ -5,7 +5,8 @@ module.exports = function (app) {
     legacyCreateProxyMiddleware(
       [
        '/api/pdf/pdfupload',
-       "/api/chat/giverespone"
+       "/api/chat/giverespone",
+       "/api/pdf/invoke"
       ],
       {
         target: "https://pdfgpt-ud15.onrender.com",
