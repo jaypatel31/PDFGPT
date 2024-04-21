@@ -32,6 +32,7 @@ export const pdfUploadSlice = createSlice({
     },
     resetStatus(state,action){
       state.chatStatus="idle"
+      state.chatError = null;
     }
   },
   extraReducers: builder => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { generateChat, resetChat } from "../stateSlice/chatSlice";
+import { generateChat, resetChat, resetStatus } from "../stateSlice/chatSlice";
 import { toast } from "react-toastify";
 
 const Chat = () => {
@@ -33,6 +33,17 @@ const Chat = () => {
             dispatch(resetChat())
         }
     },[chatInfo])
+
+    useEffect(()=>{
+        if(chatError){
+            setLoading(false)
+            toast.error(chatError)
+            let arr =  [...chatArray];
+            arr.pop()
+            setChatArray(arr)
+            dispatch(resetStatus())
+        }
+    },[chatError])
 
     const sendChat = (e) => {
         e.preventDefault();
@@ -114,6 +125,11 @@ const Chat = () => {
                     <div class="absolute right-0 items-center inset-y-0 sm:flex">
                         
                         <button type="submit" class="inline-flex items-center justify-center rounded-lg px-2 sm:px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none" disabled={loading}>
+                            {
+                                loading && (
+                                    <svg className="animate-spin h-5 w-5 mr-3" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#FFF" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path fill="#FFF"  d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="spinner_ajPY"/></svg>
+                                )
+                            }
                         <span class="font-bold sm:block hidden">Send</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 ml-2 transform rotate-90">
                             <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
