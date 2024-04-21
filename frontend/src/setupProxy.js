@@ -8,7 +8,7 @@ module.exports = function (app) {
        "/api/chat/giverespone"
       ],
       {
-        target: "http://localhost:4000",
+        target: "https://pdfgpt-ud15.onrender.com",
       }
     )
   );
