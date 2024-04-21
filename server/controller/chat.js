@@ -25,7 +25,6 @@ const formatChatHistory = (human, ai, previousChatHistory) => {
   };
 
 export const generateChat = async (req, res, next) => {
-
     // Model Define
     const llm  = new ChatOpenAI({model:"gpt-3.5-turbo"})
     const dir = path.resolve(process.cwd(), "data")
