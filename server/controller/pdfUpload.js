@@ -6,6 +6,11 @@ import {OpenAIEmbeddings} from "@langchain/openai"
 
 
 export const pdfFileUpload = async (req, res, next) => {
+    res.status(200).json({
+      message: "File Uploaded Successfully",
+      data: "small.pdf"
+  });
+
     const rootDir = path.resolve(process.cwd());
     
     const newpath = rootDir+"/files/";
